@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { library } from '../models/Library';
 import { Family, getColorFromFamily, Monsters, isFamily } from '../models/Models';
@@ -63,7 +63,19 @@ interface RecipeTreeNodeProps {
 export const RecipeTreeNode = ({part}: RecipeTreeNodeProps) => {
   const [recipeIndex, setRecipeIndex] = useState(-1);
 
-  if (isFamily(part)) {
+
+  // when part changes for the component, reset the selection
+  useEffect(() => {
+    setRecipeIndex(-1)
+  }, [part]);
+
+  // part can be null if you switch from a deep recipe tree to a shallow one.
+  // in that case don't try to render this "empty" child component.
+  if( !part ){
+    return null;
+  }
+  
+  else if (isFamily(part)) {
     const fam = part as Family;
     return (
       <FamilyNode family={fam}>
@@ -74,14 +86,11 @@ export const RecipeTreeNode = ({part}: RecipeTreeNodeProps) => {
 
   const monster = library.get(part);
 
-  // TODO: still a bug here :/ need to reset index
-  // if a selection in a parent node was changed
-
   return (
     <div>
       <Card family={monster.family}>
         <MonsterImage monster={monster.name} clickNav={false} />
-        <Select onChange={x => setRecipeIndex(parseInt(x.target.value))}>
+        <Select value={recipeIndex} onChange={x => setRecipeIndex(parseInt(x.target.value))}>
           <option value={-1}>none</option>
           {monster.recipes.map(x => (
             <option value={monster.recipes.indexOf(x)}>{x.base} + {x.mate}</option>
@@ -93,10 +102,10 @@ export const RecipeTreeNode = ({part}: RecipeTreeNodeProps) => {
       {recipeIndex !== -1 && 
       <ChildContainer>
         <Child>
-          <RecipeTreeNode part={monster.recipes[recipeIndex].base} />
+          <RecipeTreeNode part={monster.recipes[recipeIndex]?.base} />
         </Child> 
         <Child>
-          <RecipeTreeNode part={monster.recipes[recipeIndex].mate} />
+          <RecipeTreeNode part={monster.recipes[recipeIndex]?.mate} />
         </Child>
       </ChildContainer>}
     </div>
