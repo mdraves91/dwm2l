@@ -11,12 +11,12 @@ import { AppBar } from './AppBar';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/dwm2l">
       <div>
         <ScrollToTop />
         <AppBar />
         <Switch>
-          <Route path='/dwm2l/monster/:monster' component={MonsterScreen} />
+          <Route path='/monster/:monster' component={MonsterScreen} />
           <Route path="/" component={MainScreen} />
         </Switch>
       </div>
