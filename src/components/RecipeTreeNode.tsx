@@ -5,11 +5,9 @@ import { Family, getColorFromFamily, Monsters, isFamily } from '../models/Models
 import { MonsterImage } from './MonsterImage';
 
 const Card = styled.div<{family: Family}>`
-
   background-color: ${props => getColorFromFamily(props.family)};
   color: white;
-
-  width: 100%;
+  min-width: 150px;
   height: 150px;
   position:relative;
   text-align: center;
@@ -19,6 +17,7 @@ const Card = styled.div<{family: Family}>`
 `
 
 const Select = styled.select`
+  max-width: 100%;
   position: absolute;
   bottom:0;
 `
@@ -29,8 +28,6 @@ const ChildContainer = styled.div`
 `
 
 const Child = styled.div`
-  height: 50%;
-  width: 50%;
   display: inline-block;
   vertical-align: top;
   
@@ -44,7 +41,7 @@ const Child = styled.div`
 const FamilyNode = styled.div<{family: Family}>`
   background-color: ${props => getColorFromFamily(props.family)};
   height: 150px;
-  width: 100%;
+  min-width: 150px;
   color: white;
   text-align: center;
 
