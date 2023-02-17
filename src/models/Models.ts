@@ -50,17 +50,17 @@ export enum Family {
 
 export function getColorFromFamily(family: Family) {
   switch (family) {
-    case Family.SlimeFamily: return '#00B0FF';
-    case Family.DragonFamily: return '#E53935';
-    case Family.BeastFamily: return '#795548';
-    case Family.BirdFamily: return '#26C6DA';
-    case Family.PlantFamily: return '#33691E';
-    case Family.BugFamily: return '#C0CA33';
-    case Family.DemonFamily: return '#424242';
-    case Family.ZombieFamily: return '#9E9E9E';
-    case Family.MaterialFamily: return '#FFCA28';
-    case Family.WaterFamily: return '#01579B';
-    case Family.BossFamily: return '#7E57C2';
+    case Family.SlimeFamily: return '#381d89';
+    case Family.DragonFamily: return '#fa915a';
+    case Family.BeastFamily: return '#a1592a';
+    case Family.BirdFamily: return '#f13393';
+    case Family.PlantFamily: return '#37b351';
+    case Family.BugFamily: return '#26b2ab';
+    case Family.DemonFamily: return '#020202';
+    case Family.ZombieFamily: return '#734ca3';
+    case Family.MaterialFamily: return '#919095';
+    case Family.WaterFamily: return '#04b1f6';
+    case Family.BossFamily: return '#fc2a20';
     default:
       return '#ffffff';
   }
