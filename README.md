@@ -3,7 +3,7 @@
 Dragon Warrior Monsters 2l (Tool) is a tool for the monster breeding mechanic in the game.
 
 Demo:
-https://mitchhymel.github.io/dwm2l/
+https://mdraves91.github.io/dwm2l/
 
 
 Credits to the following sources for monster info
